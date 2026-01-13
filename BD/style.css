@@ -1,0 +1,48 @@
+.container{
+     font-family: "BBH Sans Bogle", sans-serif;
+  font-weight: 40px;
+  font-style: normal;
+width: 100%; 
+margin: 50px; 
+margin-top:50px;
+padding: 30px;
+border: 90px solid rgb(179, 160, 212);
+background-color: rgb(160, 112, 202)
+}
+header{
+
+     font-family: "BBH Sans Bogle", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+width: 80%;
+margin: 5px; 
+padding: 90px;
+border: 30px solid rgb(179, 160, 212);
+background-color: rgb(160, 112, 202)
+}
+table{
+border-collapse:collapse;
+width:100% ;
+}
+button{
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    background: #0B63F6;
+    box-shadow: 0 5px 0 #003CC5;
+}
+
+.btn-new:hover {
+    background: #003CC5;
+    box-shadow: none;
+    position: relative;
+    top: 5px;
+}
+ 
+
+
+th, td{
+    padding: 5px;
+    border:1px solid rgb(165, 151, 184);
+}
