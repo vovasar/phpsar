@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скидки и купоны - лучшие предложения</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Шапка */
+        header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+
+        .logo-icon {
+            font-size: 32px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .auth-buttons a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 15px;
+            padding: 8px 20px;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        .auth-buttons .login {
+            border: 2px solid white;
+        }
+
+        .auth-buttons .register {
+            background-color: white;
+            color: #ff6b6b;
+        }
+
+        .auth-buttons a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Герой секция */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 40px auto 0;
+            display: flex;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 18px 20px;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            font-size: 18px;
+        }
+
+        .search-box button {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 0 50px 50px 0;
+            padding: 0 35px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .search-box button:hover {
+            background-color: #ff5252;
+        }
+
+        /* Секция скидок */
+        .discounts {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: #ff6b6b;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 18px;
+        }
+
+        .discounts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .discount-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .discount-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .discount-header {
+            padding: 20px;
+            background-color: #ff6b6b;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .discount-value {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .discount-category {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .discount-body {
+            padding: 25px;
+        }
+
+        .discount-title {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .discount-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .discount-info {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .discount-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #4ecdc4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .discount-button:hover {
+            background-color: #3db9b0;
+        }
+
+        /* Секция категорий */
+        .categories {
+            padding: 80px 0;
+            background-color: #f1f3f5;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-icon {
+            font-size: 40px;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+
+        .category-card h3 {
+            font-size: 20px;
+            color: #333;
+        }
+
+        /* Секция как это работает */
+        .how-it-works {
+            padding: 80px 0;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            padding: 0 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background-color: #ff6b6b;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .step h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .step p {
+            color: #666;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        /* Футер */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: #ff6b6b;
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-column p {
+            color: #bdc3c7;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b6b;
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: #ff6b6b;
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            .logo {
+                margin-bottom: 20px;
+            }
+            
+            nav ul {
+                margin-bottom: 20px;
+            }
+            
+            .auth-buttons {
+                margin-top: 10px;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .step {
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero h2 {
+                font-size: 30px;
+            }
+            
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .search-box input {
+                border-radius: 50px;
+                margin-bottom: 10px;
+            }
+            
+            .search-box button {
+                border-radius: 50px;
+                padding: 15px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+
+        /* Стили для купонов */
+        .coupon-code {
+            background-color: #f8f9fa;
+            border: 2px dashed #4ecdc4;
+            padding: 15px;
+            text-align: center;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            letter-spacing: 3px;
+        }
+
+        .expired {
+            opacity: 0.7;
+            position: relative;
+        }
+
+        .expired:after {
+            content: 'Истек';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff6b6b;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-percent"></i>
+                </div>
+                <h1>Скидки&Купоны</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="#discounts"><i class="fas fa-tags"></i> Акции</a></li>
+                    <li><a href="#categories"><i class="fas fa-list"></i> Категории</a></li>
+                    <li><a href="#how"><i class="fas fa-question-circle"></i> Как это работает</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="#" class="login"><i class="fas fa-sign-in-alt"></i> Войти</a>
+                <a href="#" class="register"><i class="fas fa-user-plus"></i> Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Герой секция -->
+    <section class="hero">
+        <div class="container">
+            <h2>Лучшие скидки и купоны для вас</h2>
+            <p>Находите выгодные предложения от любимых магазинов. Экономьте на покупках с нашими эксклюзивными купонами и промокодами.</p>
+            <div class="search-box">
+                <input type="text" placeholder="Введите название магазина или категорию...">
+                <button><i class="fas fa-search"></i> Найти скидки</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция акций и скидок -->
+    <section class="discounts" id="discounts">
+        <div class="container">
+            <div class="section-title">
+                <h2>Горящие предложения</h2>
+                <p>Самые выгодные акции и купоны, собранные специально для вас</p>
+            </div>
+            
+            <div class="discounts-grid">
+                <!-- Карточка скидки 1 -->
+                <div class="discount-card">
+                    <div class="discount-header">
+                        <div class="discount-value">-30%</div>
+                        <div class="discount-category">Одежда</div>
+                    </div>
+                    <div class="discount-body">
+                        <h3 class="discount-title">Скидка на всю летнюю коллекцию</h3>
+                        <p class="discount-description">Скидка на весь ассортимент летней одежды в интернет-магазине FashionStore. Действует на все товары бренда.</p>
+                        <div class="coupon-code">SUMMER30</div>
+                        <div class="discount-info">
+                            <span><i class="far fa-calendar-alt"></i> До 15.08.2023</span>
+                            <span><i class="fas fa-download"></i> 245 использований</span>
+                        </div>
+                        <a href="#" class="discount-button"><i class="fas fa-copy"></i> Получить купон</a>
+                    </div>
+                </div>
+                
+                <!-- Карточка скидки 2 -->
+                <div class="discount-card">
+                    <div class="discount-header">
+                        <div class="discount-value">-25%</div>
+                        <div class="discount-category">Электроника</div>
+                    </div>
+                    <div class="discount-body">
+                        <h3 class="discount-title">Скидка на наушники и аудиотехнику</h3>
+                        <p class="discount-description">Скидка на всю аудиотехнику в магазине AudioPro. Акция распространяется на наушники, колонки и аксессуары.</p>
+                        <div class="coupon-code">AUDIO25</div>
+                        <div class="discount-info">
+                            <span><i class="far fa-calendar-alt"></i> До 30.09.2023</span>
+                            <span><i class="fas fa-download"></i> 189 использований</span>
+                        </div>
+                        <a href="#" class="discount-button"><i class="fas fa-copy"></i> Получить купон</a>
+                    </div>
+                </div>
+                
+                <!-- Карточка скидки 3 -->
+                <div class="discount-card expired">
+                    <div class="discount-header">
+                        <div class="discount-value">-40%</div>
+                        <div class="discount-category">Рестораны</div>
+                    </div>
+                    <div class="discount-body">
+                        <h3 class="discount-title">Скидка на доставку еды</h3>
+                        <p class="discount-description">Скидка на первый заказ в сервисе доставки FoodDelivery. Минимальная сумма заказа 500 рублей.</p>
+                        <div class="coupon-code">FOOD40</div>
+                        <div class="discount-info">
+                            <span><i class="far fa-calendar-alt"></i> До 01.08.2023</span>
+                            <span><i class="fas fa-download"></i> 421 использование</span>
+                        </div>
+                        <a href="#" class="discount-button"><i class="fas fa-copy"></i> Купон истек</a>
+                    </div>
+                </div>
+                
+                <!-- Карточка скидки 4 -->
+                <div class="discount-card">
+                    <div class="discount-header">
+                        <div class="discount-value">-15%</div>
+                        <div class="discount-category">Красота</div>
+                    </div>
+                    <div class="discount-body">
+                        <h3 class="discount-title">Скидка на косметику и уход</h3>
+                        <p class="discount-description">Скидка на всю косметику в интернет-магазине BeautyShop. Действует на товары для лица, тела и волос.</p>
+                        <div class="coupon-code">BEAUTY15</div>
+                        <div class="discount-info">
+                            <span><i class="far fa-calendar-alt"></i> До 10.10.2023</span>
+                            <span><i class="fas fa-download"></i> 312 использований</span>
+                        </div>
+                        <a href="#" class="discount-button"><i class="fas fa-copy"></i> Получить купон</a>
+                    </div>
+                </div>
+                
+                <!-- Карточка скидки 5 -->
+                <div class="discount-card">
+                    <div class="discount-header">
+                        <div class="discount-value">-50%</div>
+                        <div class="discount-category">Путешествия</div>
+                    </div>
+                    <div class="discount-body">
+                        <h3 class="discount-title">Скидка на бронирование отелей</h3>
+                        <p class="discount-description">Скидка на бронирование отелей по всему миру. Акция действует при бронировании от 3 ночей.</p>
+                        <div class="coupon-code">HOTEL50</div>
+                        <div class="discount-info">
+                            <span><i class="far fa-calendar-alt"></i> До 25.12.2023</span>
+                            <span><i class="fas fa-download"></i> 156 использований</span>
+                        </div>
+                        <a href="#" class="discount-button"><i class="fas fa-copy"></i> Получить купон</a>
+                    </div>
+                </div>
+                
+                <!-- Карточка скидки 6 -->
+                <div class="discount-card">
+                    <div class="discount-header">
+                        <div class="discount-value">-20%</div>
+                        <div class="discount-category">Книги</div>
+                    </div>
+                    <div class="discount-body">
+                        <h3 class="discount-title">Скидка на все книги</h3>
+                        <p class="discount-description">Скидка на весь ассортимент книг в интернет-магазине BookWorld. Акция распространяется на художественную и нехудожественную литературу.</p>
+                        <div class="coupon-code">BOOK20</div>
+                        <div class="discount-info">
+                            <span><i class="far fa-calendar-alt"></i> До 05.11.2023</span>
+                            <span><i class="fas fa-download"></i> 278 использований</span>
+                        </div>
+                        <a href="#" class="discount-button"><i class="fas fa-copy"></i> Получить купон</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция категорий -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Популярные категории</h2>
+                <p>Найдите скидки в интересующей вас категории</p>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>Одежда</h3>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Электроника</h3>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Рестораны</h3>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Красота</h3>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>Путешествия</h3>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Книги</h3>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Дом и сад</h3>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Спорт</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция "Как это работает" -->
+    <section class="how-it-works" id="how">
+        <div class="container">
+            <div class="section-title">
+                <h2>Как это работает</h2>
+                <p>Всего 3 простых шага к экономии</p>
+            </div>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Найдите предложение</h3>
+                    <p>Ищите скидки и купоны по категориям или с помощью поиска. У нас тысячи акций от проверенных магазинов.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Получите купон</h3>
+                    <p>Нажмите на кнопку "Получить купон" чтобы скопировать промокод или получить ссылку на акцию.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Экономьте деньги</h3>
+                    <p>Используйте купон при оформлении заказа в интернет-магазине и наслаждайтесь своей экономией!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>О нас</h3>
+                    <p>Мы собираем лучшие скидки и купоны от проверенных магазинов, чтобы помочь вам экономить на покупках каждый день.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Полезные ссылки</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Главная</a></li>
+                        <li><a href="#discounts">Акции</a></li>
+                        <li><a href="#categories">Категории</a></li>
+                        <li><a href="#how">Как это работает</a></li>
+                        <li><a href="#">Партнерам</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Категории</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Одежда и обувь</a></li>
+                        <li><a href="#">Электроника</a></li>
+                        <li><a href="#">Красота и здоровье</a></li>
+                        <li><a href="#">Путешествия</a></li>
+                        <li><a href="#">Рестораны и кафе</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-envelope"></i> info@discounts.ru</p>
+                    <p><i class="fas fa-phone"></i> +7 (800) 123-45-67</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Примерная, д. 10</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Скидки&Купоны. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Скрипт для копирования купонов
+        document.querySelectorAll('.discount-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (!this.classList.contains('expired')) {
+                    const couponCode = this.parentElement.querySelector('.coupon-code').textContent;
+                    navigator.clipboard.writeText(couponCode).then(() => {
+                        const originalText = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-check"></i> Код скопирован!';
+                        this.style.backgroundColor = '#2ecc71';
+                        
+                        setTimeout(() => {
+                            this.innerHTML = originalText;
+                            this.style.backgroundColor = '#4ecdc4';
+                        }, 2000);
+                    });
+                }
+                e.preventDefault();
+            });
+        });
+
+        // Скрипт для поиска
+        document.querySelector('.search-box button').addEventListener('click', function() {
+            const searchTerm = document.querySelector('.search-box input').value;
+            if (searchTerm.trim() !== '') {
+                alert(`Поиск скидок по запросу: "${searchTerm}"\n(В реальном сайте здесь будет переход к результатам поиска)`);
+            }
+        });
+
+        // Скрипт для навигации
+        document.querySelectorAll('nav a, .auth-buttons a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                    alert('В реальном сайте здесь будет переход на соответствующую страницу');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
